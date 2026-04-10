@@ -1271,7 +1271,7 @@ function SettingsModal({ onClose }) {
         <div style={{ padding: "14px 0" }}>
           <h3 style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: T.textMuted, margin: "0 0 10px" }}>About</h3>
           <p style={{ fontSize: 13, color: T.textMuted, margin: 0 }}>YogaOasis App v1.0</p>
-          <p style={{ fontSize: 12, color: T.textFaint, margin: "4px 0 0" }}>Powered by Nimbus Labs</p>
+          <p style={{ fontSize: 12, color: T.textFaint, margin: "4px 0 0" }}>Powered by Lumi</p>
         </div>
         <button style={{ width: "100%", padding: "12px 0", borderRadius: 8, border: `1px solid ${T.border}`, background: "transparent", color: T.accent, fontWeight: 700, fontSize: 14, cursor: "pointer", marginTop: 8 }}>
           Sign Out
@@ -1444,7 +1444,7 @@ export default function App() {
   const [page, setPage] = useState("home");
   const [isAdmin, setIsAdmin] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
-  const [showAdminToggle, setShowAdminToggle] = useState(false);
+  const [showAdminToggle, setShowAdminToggle] = useState(true);
   const [showMore, setShowMore] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);

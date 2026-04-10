@@ -44,13 +44,13 @@ const DEMO_CONFIG = {
     },
     {
       icon: "palette",
-      title: "White-Label Ready",
-      desc: "Your studio's colors, fonts, and personality — not ours. Every pixel reflects the YogaOasis brand.",
+      title: "Your Brand, Your App",
+      desc: "Custom-designed with your studio's colors, fonts, and personality — every pixel reflects the YogaOasis brand.",
     },
   ],
 
-  builderName: "Nimbus Labs",
-  builderUrl: "nimbuslabs.dev",
+  builderName: "LUMI",
+  builderUrl: "LumiClass.app",
 };
 
 export default DEMO_CONFIG;

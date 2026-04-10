@@ -127,9 +127,9 @@ export default function DemoWrapper() {
               Ready to Launch?
             </h3>
             <p style={{ fontSize: 14, opacity: 0.85, lineHeight: 1.55, margin: "0 0 16px" }}>
-              Get your studio's custom loyalty app built and deployed in weeks, not months. Powered by Nimbus Labs.
+              Get your studio's custom loyalty app built and deployed in weeks, not months.
             </p>
-            <a href="https://nimbuslabs.dev" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://lumiclass.app" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-block", padding: "10px 24px", borderRadius: 8, border: "2px solid rgba(255,255,255,.4)",
               background: "transparent", color: "#fff", fontWeight: 700, fontSize: 14,
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", textDecoration: "none",
@@ -141,6 +141,15 @@ export default function DemoWrapper() {
       </div>
 
       <style>{`
+        .demo-sidebar-left, .demo-sidebar-right, .demo-phone-wrap > div > div {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .demo-sidebar-left::-webkit-scrollbar,
+        .demo-sidebar-right::-webkit-scrollbar,
+        .demo-phone-wrap > div > div::-webkit-scrollbar {
+          display: none;
+        }
         @media (max-width: 1100px) {
           .demo-sidebar-left, .demo-sidebar-right { display: none !important; }
         }
