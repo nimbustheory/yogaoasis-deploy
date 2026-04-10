@@ -96,6 +96,13 @@ const STUDIO_IMAGES = {
   eastExterior: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/screen-shot-2023-04-25-at-12-58-42-pm_orig.png",
   teacherTraining: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/3517037.jpg?127",
   joshuaTree: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/joshua-tree-national-park.jpg",
+  rooftopYoga: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/edited/rooftop-sunset_12.jpg",
+  scheduleBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1437602638.jpg",
+  classesBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1386906206.jpg",
+  communityBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/88-membership-square-new_orig.jpg",
+  staffBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1249216975.jpg",
+  eventsBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/579128206.jpg",
+  gettingStartedBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/2058054469.jpg",
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -263,9 +270,9 @@ function HomePage() {
     <div className="pb-6">
       {/* Hero */}
       <section style={{ position: "relative", overflow: "hidden", minHeight: 280 }}>
-        {/* Background image */}
+        {/* Background image — brightness 0.7 for gentle darken */}
         <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.hero})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.7)" }} />
-        {/* Gradient overlay — ~30% darkening */}
+        {/* Gradient overlay — ~30% total darkening */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.45) 100%)" }} />
         <div style={{ position: "relative", padding: "32px 22px", color: "#fff" }}>
           <p style={{ color: T.accent, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 8 }}>
@@ -397,12 +404,14 @@ function ClassesPage() {
   const allPractices = [TODAYS_FOCUS, ...PAST_PRACTICES, UPCOMING_PRACTICE].sort((a, b) => b.date.localeCompare(a.date));
 
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Classes" subtitle="Past, present, and upcoming practice" />
-      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-        {allPractices.map(p => (
-          <PracticeCardFull key={p.id} practice={p} expanded={expandedPractice === p.id} onToggle={() => setExpandedPractice(expandedPractice === p.id ? null : p.id)} />
-        ))}
+    <div>
+      <PageHero image={STUDIO_IMAGES.classesBg} title="Classes" subtitle="Past, present, and upcoming practice" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {allPractices.map(p => (
+            <PracticeCardFull key={p.id} practice={p} expanded={expandedPractice === p.id} onToggle={() => setExpandedPractice(expandedPractice === p.id ? null : p.id)} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -416,8 +425,9 @@ function SchedulePage() {
   const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Schedule" subtitle="Reserve your spot — classes fill up fast" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.scheduleBg} title="Schedule" subtitle="Reserve your spot — classes fill up fast" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "flex", gap: 4, marginBottom: 16, overflowX: "auto", paddingBottom: 4 }}>
         {days.map((d, i) => (
           <button key={d} onClick={() => setSelectedDay(i)} style={{ padding: "8px 14px", borderRadius: 8, border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap", background: selectedDay === i ? T.accent : T.bgDim, color: selectedDay === i ? "#fff" : T.textMuted, transition: "all 0.15s" }}>
@@ -447,6 +457,7 @@ function SchedulePage() {
           );
         })}
       </div>
+      </div>
     </div>
   );
 }
@@ -462,8 +473,9 @@ function PracticePage() {
   const totalClasses = 156;
 
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="My Practice" subtitle="Track your journey and celebrate growth" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.rooftopYoga} title="My Practice" subtitle="Track your journey and celebrate growth" position="center top" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 20 }}>
         <div style={{ background: T.accentGhost, border: `1px solid ${T.accentBorder}`, borderRadius: 12, padding: "14px 12px", textAlign: "center" }}>
           <Flame size={20} color={T.accent} style={{ margin: "0 auto 4px" }} />
@@ -565,6 +577,7 @@ function PracticePage() {
           ))}
         </div>
       </div>
+      </div>
     </div>
   );
 }
@@ -573,8 +586,9 @@ function PracticePage() {
 function CommunityPage() {
   const { feedCelebrations, celebrateFeed } = useContext(AppContext);
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Community" subtitle="Celebrate each other's practice" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.communityBg} title="Community" subtitle="Celebrate each other's practice" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       {STUDIO_CONFIG.features.guestPasses && (
         <div style={{ background: `linear-gradient(135deg, ${T.bg}, hsl(20,30%,14%))`, borderRadius: 14, padding: "18px 18px", marginBottom: 20, color: "#fff" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -611,6 +625,7 @@ function CommunityPage() {
           );
         })}
       </div>
+      </div>
     </div>
   );
 }
@@ -619,8 +634,9 @@ function CommunityPage() {
 function TeachersPage() {
   const [expandedTeacher, setExpandedTeacher] = useState(null);
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Teachers" subtitle="Meet the YogaOasis teaching team" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.staffBg} title="Teachers" subtitle="Meet the YogaOasis teaching team" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {TEACHERS.map(teacher => {
           const expanded = expandedTeacher === teacher.id;
@@ -662,6 +678,7 @@ function TeachersPage() {
           );
         })}
       </div>
+      </div>
     </div>
   );
 }
@@ -669,8 +686,9 @@ function TeachersPage() {
 // ——— MEMBERSHIP PAGE ———
 function MembershipPage() {
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Membership" subtitle="Many ways to practice" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.gettingStartedBg} title="Membership" subtitle="Many ways to practice" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {MEMBERSHIP_TIERS.map(tier => (
           <div key={tier.id} style={{ background: T.bgCard, border: `1px solid ${tier.popular ? T.accent : T.border}`, borderRadius: 14, padding: "20px 18px", position: "relative", overflow: "hidden" }}>
@@ -698,6 +716,7 @@ function MembershipPage() {
           </div>
         ))}
       </div>
+      </div>
     </div>
   );
 }
@@ -705,8 +724,9 @@ function MembershipPage() {
 // ——— EVENTS PAGE ———
 function EventsPage() {
   return (
-    <div style={{ padding: "0 16px" }}>
-      <PageTitle title="Events" subtitle="Workshops, retreats, and special offerings" />
+    <div>
+      <PageHero image={STUDIO_IMAGES.eventsBg} title="Events" subtitle="Workshops, retreats, and special offerings" />
+      <div style={{ padding: "0 16px", marginTop: 20 }}>
       {EVENTS.map(ev => (
         <div key={ev.id} style={{ background: T.bgCard, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", marginBottom: 16 }}>
           <div style={{ background: `linear-gradient(135deg, ${T.bg}, hsl(20,30%,14%))`, padding: "20px 18px", color: "#fff", position: "relative", overflow: "hidden" }}>
@@ -733,6 +753,7 @@ function EventsPage() {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }
@@ -1078,6 +1099,19 @@ function PageTitle({ title, subtitle }) {
       <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, margin: 0 }}>{title}</h1>
       {subtitle && <p style={{ fontSize: 13, color: T.textMuted, margin: "4px 0 0" }}>{subtitle}</p>}
     </div>
+  );
+}
+
+function PageHero({ image, title, subtitle, position }) {
+  return (
+    <section style={{ position: "relative", overflow: "hidden", minHeight: 160 }}>
+      <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: position || "center", filter: "brightness(0.7)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.45) 100%)" }} />
+      <div style={{ position: "relative", padding: "40px 22px 24px", color: "#fff" }}>
+        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, margin: 0, fontWeight: 500 }}>{title}</h1>
+        {subtitle && <p style={{ fontSize: 14, color: "rgba(255,255,255,.8)", margin: "6px 0 0", maxWidth: 300, lineHeight: 1.5 }}>{subtitle}</p>}
+      </div>
+    </section>
   );
 }
 
