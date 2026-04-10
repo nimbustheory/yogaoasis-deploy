@@ -87,22 +87,18 @@ const T = {
 // ═══════════════════════════════════════════════════════════════
 //  STUDIO IMAGES — Real YogaOasis CDN URLs
 // ═══════════════════════════════════════════════════════════════
+const YO_CDN = "https://www.yogaoasis.com/uploads/5/3/0/2/53020043";
 const STUDIO_IMAGES = {
-  hero: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/editor/welcome-yogaoasis_3.jpg?1595022313",
-  logo: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/1456817654.png",
-  rooftopSunset: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/rooftop-sunset_orig.jpg",
-  outdoorClass: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/published/open-air.jpg?1595019110",
-  studioInterior: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/yo-in-studio-thumbnail-2023_orig.jpg",
-  eastExterior: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/screen-shot-2023-04-25-at-12-58-42-pm_orig.png",
-  teacherTraining: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/3517037.jpg?127",
-  joshuaTree: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/joshua-tree-national-park.jpg",
-  rooftopYoga: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/edited/rooftop-sunset_12.jpg",
-  scheduleBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1437602638.jpg",
-  classesBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1386906206.jpg",
-  communityBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/88-membership-square-new_orig.jpg",
-  staffBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/1249216975.jpg",
-  eventsBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/579128206.jpg",
-  gettingStartedBg: "https://www.yogaoasis.com/uploads/5/3/0/2/53020043/background-images/2058054469.jpg",
+  hero: `${YO_CDN}/yoga-pavilion-18_orig.jpg`,                              // Solo meditation under desert pavilion, sun flare
+  logo: `${YO_CDN}/1456817654.png`,
+  joshuaTree: `${YO_CDN}/joshua-tree-national-park.jpg`,
+  classesBg: `${YO_CDN}/published/img-4233.jpeg`,                           // Person doing yoga on mat in studio
+  scheduleBg: `${YO_CDN}/yo-in-studio-thumbnail-2023_orig.jpg`,              // Warm studio interior with hardwood floors
+  practiceBg: `${YO_CDN}/published/diy-thumbnail_14.jpg`,                    // Sam Rice in backbend outdoors with cacti
+  communityBg: `${YO_CDN}/yoga-pavilion-2_orig.jpg`,                         // Group outdoor yoga practice under pavilion
+  staffBg: `${YO_CDN}/editor/screen-shot-2024-01-19-at-9-42-11-pm_4.png`,   // Three teachers together (Darren, Alexandra, +1)
+  membershipBg: `${YO_CDN}/95-membership-square-new_orig.png`,               // Woman in yoga attire, hands on heart
+  eventsBg: `${YO_CDN}/published/happy-hour3.jpg`,                           // Two women in yoga poses
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -474,7 +470,7 @@ function PracticePage() {
 
   return (
     <div>
-      <PageHero image={STUDIO_IMAGES.rooftopYoga} title="My Practice" subtitle="Track your journey and celebrate growth" position="center top" />
+      <PageHero image={STUDIO_IMAGES.practiceBg} title="My Practice" subtitle="Track your journey and celebrate growth" />
       <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 20 }}>
         <div style={{ background: T.accentGhost, border: `1px solid ${T.accentBorder}`, borderRadius: 12, padding: "14px 12px", textAlign: "center" }}>
@@ -687,7 +683,7 @@ function TeachersPage() {
 function MembershipPage() {
   return (
     <div>
-      <PageHero image={STUDIO_IMAGES.gettingStartedBg} title="Membership" subtitle="Many ways to practice" />
+      <PageHero image={STUDIO_IMAGES.membershipBg} title="Membership" subtitle="Many ways to practice" />
       <div style={{ padding: "0 16px", marginTop: 20 }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {MEMBERSHIP_TIERS.map(tier => (
