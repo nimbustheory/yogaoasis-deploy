@@ -266,10 +266,8 @@ function HomePage() {
     <div className="pb-6">
       {/* Hero */}
       <section style={{ position: "relative", overflow: "hidden", minHeight: 280 }}>
-        {/* Background image — brightness 0.7 for gentle darken */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.hero})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.7)" }} />
-        {/* Gradient overlay — ~30% total darkening */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.45) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.hero})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.79)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.035) 40%, rgba(0,0,0,0.32) 100%)" }} />
         <div style={{ position: "relative", padding: "32px 22px", color: "#fff" }}>
           <p style={{ color: T.accent, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 8 }}>
             {formatDateLong(today)}
@@ -1101,8 +1099,8 @@ function PageTitle({ title, subtitle }) {
 function PageHero({ image, title, subtitle, position }) {
   return (
     <section style={{ position: "relative", overflow: "hidden", minHeight: 160 }}>
-      <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: position || "center", filter: "brightness(0.7)" }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.45) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: position || "center", filter: "brightness(0.79)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.035) 40%, rgba(0,0,0,0.32) 100%)" }} />
       <div style={{ position: "relative", padding: "40px 22px 24px", color: "#fff" }}>
         <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, margin: 0, fontWeight: 500 }}>{title}</h1>
         {subtitle && <p style={{ fontSize: 14, color: "rgba(255,255,255,.8)", margin: "6px 0 0", maxWidth: 300, lineHeight: 1.5 }}>{subtitle}</p>}
