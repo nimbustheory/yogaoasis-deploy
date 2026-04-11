@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback, createContext, useContext, useRef, us
 import {
   Home, Calendar, TrendingUp, Users, CreditCard, CalendarDays,
   Menu, X, Bell, Settings, Shield, ChevronRight, ChevronDown, Clock,
-  PartyPopper, ArrowUpRight, ArrowDownRight, Award, DollarSign, LayoutDashboard,
-  UserCheck, Megaphone, LogOut, Plus, Edit3, Send, Check, Search, Copy, Info,
+  ArrowUpRight, ArrowDownRight, Award, DollarSign, LayoutDashboard,
+  UserCheck, Megaphone, LogOut, Plus, Send, Check, Search, Info,
   CircleCheck, UserPlus, Heart, Flame, Star, Sun, Moon, Wind, Sparkles,
-  Mountain, Leaf, Music, Gift, Share2, MapPin
+  Mountain, Leaf, Gift, Share2, MapPin
 } from "lucide-react";
 import {
   BarChart, Bar, AreaChart, Area, XAxis, YAxis,
@@ -1470,7 +1470,7 @@ function ReservationModal({ classData, onConfirm, onClose }) {
 // ═══════════════════════════════════════════════════════════════
 //  MAIN APP
 // ═══════════════════════════════════════════════════════════════
-export default function App() {
+export default function App({ onAdminChange }) {
   const [page, setPage] = useState("home");
   const [isAdmin, setIsAdmin] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
@@ -1485,6 +1485,10 @@ export default function App() {
   const registerForClass = useCallback((classId) => { setClassRegistrations(prev => ({ ...prev, [classId]: (prev[classId] || 0) + 1 })); setReservationClass(null); }, []);
   const openReservation = useCallback((classData) => { setReservationClass(classData); }, []);
   const celebrateFeed = useCallback((feedId) => { setFeedCelebrations(prev => ({ ...prev, [feedId]: (prev[feedId] || 0) + 1 })); }, []);
+
+  useEffect(() => {
+    if (onAdminChange) onAdminChange(isAdmin);
+  }, [isAdmin, onAdminChange]);
 
   const contentRef = useRef(null);
   useEffect(() => {
@@ -1607,15 +1611,15 @@ export default function App() {
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
             {showAdminToggle && (
-              <button onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
+              <button aria-label="Admin dashboard" onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
                 <Shield size={20} />
               </button>
             )}
-            <button onClick={() => setShowNotifications(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff", position: "relative" }}>
+            <button aria-label="Notifications" onClick={() => setShowNotifications(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff", position: "relative" }}>
               <Bell size={20} />
               {unreadCount > 0 && <span style={{ position: "absolute", top: 4, right: 4, width: 14, height: 14, borderRadius: "50%", background: T.accent, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>{unreadCount}</span>}
             </button>
-            <button onClick={() => setShowSettings(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff" }}>
+            <button aria-label="Settings" onClick={() => setShowSettings(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff" }}>
               <Settings size={20} />
             </button>
           </div>

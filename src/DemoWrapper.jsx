@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { Calendar, Flame, Heart, Users, CreditCard, CalendarDays, Bell, Shield, Sparkles, MapPin, TrendingUp, Palette } from "lucide-react";
 import DEMO_CONFIG from "./demo.config.js";
 import App from "./App.jsx";
@@ -21,6 +22,24 @@ const C = {
 };
 
 export default function DemoWrapper() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const handleAdminChange = useCallback((adminState) => {
+    setIsAdmin(adminState);
+  }, []);
+
+  if (isAdmin) {
+    return (
+      <>
+        <App onAdminChange={handleAdminChange} />
+        <style>{`
+          *, *::before, *::after { scrollbar-width: none; -ms-overflow-style: none; }
+          *::-webkit-scrollbar { display: none; }
+        `}</style>
+      </>
+    );
+  }
+
   return (
     <>
       <div style={{
@@ -91,7 +110,7 @@ export default function DemoWrapper() {
             transform: "translateZ(0)",
           }}>
             <div style={{ flex: 1, overflowY: "auto", position: "relative" }}>
-              <App />
+              <App onAdminChange={handleAdminChange} />
             </div>
           </div>
         </div>
