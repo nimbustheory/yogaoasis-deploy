@@ -28,31 +28,20 @@ export default function DemoWrapper() {
     setIsAdmin(adminState);
   }, []);
 
-  if (isAdmin) {
-    return (
-      <>
-        <App onAdminChange={handleAdminChange} />
-        <style>{`
-          *, *::before, *::after { scrollbar-width: none; -ms-overflow-style: none; }
-          *::-webkit-scrollbar { display: none; }
-        `}</style>
-      </>
-    );
-  }
-
   return (
     <>
       <div style={{
         position: "fixed", inset: 0,
         display: "flex", justifyContent: "center", gap: 0,
-        background: C.bg, fontFamily: "'DM Sans', system-ui, sans-serif",
+        background: isAdmin ? "#151210" : C.bg,
+        fontFamily: "'DM Sans', system-ui, sans-serif",
       }}>
 
-        {/* LEFT SIDEBAR */}
+        {/* LEFT SIDEBAR — hidden in admin mode */}
         <aside className="demo-sidebar-left" style={{
           width: 320, flexShrink: 0,
           overflowY: "auto", padding: "40px 32px 24px",
-          display: "flex", flexDirection: "column",
+          display: isAdmin ? "none" : "flex", flexDirection: "column",
         }}>
           <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.2em", color: C.accent, marginBottom: 24 }}>
             Prototype Demo
@@ -94,32 +83,34 @@ export default function DemoWrapper() {
           </p>
         </aside>
 
-        {/* CENTER PHONE */}
-        <div className="demo-phone-wrap" style={{
-          width: 390, flexShrink: 0,
-          display: "flex", flexDirection: "column",
-        }}>
-          <div style={{
-            flex: 1,
-            background: "#fff",
-            boxShadow: "0 0 60px rgba(0,0,0,.12)",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            position: "relative",
-            transform: "translateZ(0)",
-          }}>
-            <div style={{ flex: 1, overflowY: "auto", position: "relative" }}>
+        {/* CENTER — phone frame in consumer mode, full-width in admin mode */}
+        <div className="demo-phone-wrap" style={isAdmin
+          ? { flex: 1, display: "flex", flexDirection: "column" }
+          : { width: 390, flexShrink: 0, display: "flex", flexDirection: "column" }
+        }>
+          <div style={isAdmin
+            ? { flex: 1, display: "flex", flexDirection: "column" }
+            : {
+                flex: 1, background: "#fff",
+                boxShadow: "0 0 60px rgba(0,0,0,.12)",
+                overflow: "hidden", display: "flex", flexDirection: "column",
+                position: "relative", transform: "translateZ(0)",
+              }
+          }>
+            <div style={isAdmin
+              ? { flex: 1 }
+              : { flex: 1, overflowY: "auto", position: "relative" }
+            }>
               <App onAdminChange={handleAdminChange} />
             </div>
           </div>
         </div>
 
-        {/* RIGHT SIDEBAR */}
+        {/* RIGHT SIDEBAR — hidden in admin mode */}
         <aside className="demo-sidebar-right" style={{
           width: 340, flexShrink: 0,
           overflowY: "auto", padding: "40px 32px 24px",
-          display: "flex", flexDirection: "column", gap: 16,
+          display: isAdmin ? "none" : "flex", flexDirection: "column", gap: 16,
         }}>
           {DEMO_CONFIG.salesCards.map((card, i) => {
             const Icon = iconMap[card.icon] || Shield;

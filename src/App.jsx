@@ -1486,10 +1486,6 @@ export default function App({ onAdminChange }) {
   const openReservation = useCallback((classData) => { setReservationClass(classData); }, []);
   const celebrateFeed = useCallback((feedId) => { setFeedCelebrations(prev => ({ ...prev, [feedId]: (prev[feedId] || 0) + 1 })); }, []);
 
-  useEffect(() => {
-    if (onAdminChange) onAdminChange(isAdmin);
-  }, [isAdmin, onAdminChange]);
-
   const contentRef = useRef(null);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1581,7 +1577,7 @@ export default function App({ onAdminChange }) {
               })}
             </nav>
             <div style={{ borderTop: "1px solid #3d3528", padding: "10px 8px" }}>
-              <button onClick={() => { setIsAdmin(false); setPage("home"); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: "#a1a1aa", fontSize: 13, cursor: "pointer", textAlign: "left" }}>
+              <button onClick={() => { setIsAdmin(false); setPage("home"); if (onAdminChange) onAdminChange(false); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: "#a1a1aa", fontSize: 13, cursor: "pointer", textAlign: "left" }}>
                 <LogOut size={18} />
                 <span>Exit Admin</span>
               </button>
@@ -1611,7 +1607,7 @@ export default function App({ onAdminChange }) {
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
             {showAdminToggle && (
-              <button aria-label="Admin dashboard" onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
+              <button aria-label="Admin dashboard" onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); if (onAdminChange) onAdminChange(true); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
                 <Shield size={20} />
               </button>
             )}
