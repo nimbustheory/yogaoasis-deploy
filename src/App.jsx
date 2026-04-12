@@ -92,10 +92,10 @@ const STUDIO_IMAGES = {
   hero: `${YO_CDN}/yoga-pavilion-18_orig.jpg`,                              // Solo meditation under desert pavilion, sun flare
   logo: `${YO_CDN}/1456817654.png`,
   joshuaTree: `${YO_CDN}/joshua-tree-national-park.jpg`,
-  classesBg: `${YO_CDN}/published/img-4233.jpeg`,                           // Person doing yoga on mat in studio
+  classesBg: `${YO_CDN}/yoga-pavilion-2_orig.jpg`,                           // Group outdoor yoga practice under pavilion
   scheduleBg: `${YO_CDN}/yo-in-studio-thumbnail-2023_orig.jpg`,              // Warm studio interior with hardwood floors
   practiceBg: `${YO_CDN}/published/diy-thumbnail_14.jpg`,                    // Sam Rice in backbend outdoors with cacti
-  communityBg: `${YO_CDN}/yoga-pavilion-2_orig.jpg`,                         // Group outdoor yoga practice under pavilion
+  communityBg: `${YO_CDN}/published/img-4233.jpeg`,                         // Person doing yoga on mat in studio
   staffBg: `${YO_CDN}/editor/screen-shot-2024-01-19-at-9-42-11-pm_4.png`,   // Three teachers together (Darren, Alexandra, +1)
   membershipBg: `${YO_CDN}/95-membership-square-new_orig.png`,               // Woman in yoga attire, hands on heart
   eventsBg: `${YO_CDN}/published/happy-hour3.jpg`,                           // Two women in yoga poses
